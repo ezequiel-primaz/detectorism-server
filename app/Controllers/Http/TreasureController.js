@@ -57,7 +57,7 @@ class TreasureController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async show ({ params, request, response, view }) {
+  async show ({ params }) {
     const treasure = await Treasure.findOrFail(params.id)
 
     await treasure.load('images')

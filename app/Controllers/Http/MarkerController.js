@@ -60,6 +60,11 @@ class MarkerController {
    * @param {View} ctx.view
    */
   async show ({ params, request, response, view }) {
+    const marker = await Marker.findOrFail(params.id)
+
+    await marker.load('treasures')
+
+    return marker
   }
 
   /**
