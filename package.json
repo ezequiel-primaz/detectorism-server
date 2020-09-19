@@ -1,11 +1,12 @@
 {
-  "name": "adonis-api-app",
+  "name": "detectorismo-server",
   "version": "4.1.0",
   "adonis-version": "4.1.0",
-  "description": "Adonisjs boilerplate for API server with pre-configured JWT",
+  "description": "Detectorismo-server",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "dev": "adonis serve --dev",
+    "start": "ENV_SILENT=true node server.js",
     "test": "node ace test"
   },
   "keywords": [
