@@ -62,7 +62,15 @@ class MarkerController {
   async show ({ params, request, response, view }) {
     const marker = await Marker.findOrFail(params.id)
 
-    await marker.load('treasures')
+    const treasures = await marker
+      .treasures()
+      .with('user', (builder) => {
+        builder.select('id', 'username', 'email')
+      })
+      .with('images')
+      .fetch()
+
+    marker.treasures = treasures
 
     return marker
   }
