@@ -11,21 +11,21 @@ class UserController {
         return user
     }
 
-    async show ({ params }) {
+    async show({ params }) {
         const user = await User.findOrFail(params.id)
-    
+
         const treasures = await user
-          .treasures()
-          .with('user', (builder) => {
-            builder.select('id', 'username', 'email')
-          })
-          .with('images')
-          .fetch()
-    
+            .treasures()
+            .with('user', (builder) => {
+                builder.select('id', 'username', 'email')
+            })
+            .with('images')
+            .fetch()
+
         user.treasures = treasures
-    
+
         return user
-      }
+    }
 }
 
 module.exports = UserController
