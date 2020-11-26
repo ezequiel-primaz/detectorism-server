@@ -23,7 +23,7 @@ class MarkerController {
     const { latitude, longitude } = request.all()
 
     const markers = Marker.query()
-      .nearBy(latitude, longitude, 10)
+      .nearBy(latitude, longitude, 100)
       .fetch()
 
     return markers
