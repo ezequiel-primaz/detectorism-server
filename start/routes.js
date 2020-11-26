@@ -28,3 +28,6 @@ Route.get('/markers', 'MarkerController.index')
 Route.post('/markers', 'MarkerController.store')
 Route.get('/markers/:id', 'MarkerController.show')
 Route.get('images/:path', 'ImageController.show')
+Route.get('/privacy', ({ view }) => {
+  return view.render('privacy')
+})
