@@ -31,3 +31,6 @@ Route.get('/images/:path', 'ImageController.show')
 Route.get('/privacy', ({ view }) => {
   return view.render('privacy')
 })
+Route.get('/', ({ view }) => {
+  return view.render('download')
+})
