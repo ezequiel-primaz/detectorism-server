@@ -6,7 +6,7 @@ Clone the repo and then run `npm install`.
 
 Install MySQL and create a database to this project.
 
-Here are all environment variables you must set on your .env file:
+Here are all environment variables you must set on your .env file:<br>
 **HOST**=127.0.0.1<br>
 **PORT**=3333<br>
 **NODE_ENV**=development<br>
