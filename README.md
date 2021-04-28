@@ -30,8 +30,17 @@ Run the following command to run startup migrations.
 adonis migration:run
 ```
 
+```js
+adonis swagger:export
+```
+
 ## Startup your server
 
 ```js
 npm run dev
+```
+
+## Access this service docs
+```js
+http://127.0.0.1:3333/docs/
 ```
