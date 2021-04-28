@@ -11,7 +11,7 @@ const Marker = use('App/Models/Marker')
  */
 class MarkerController {
   /**
-   * Show a list of all markers.
+   * Show a list of all markers near a given location.
    * GET markers
    *
    * @param {object} ctx
@@ -42,7 +42,8 @@ class MarkerController {
       'title',
       'description',
       'latitude',
-      'longitude'
+      'longitude',
+      'isPrivate'
     ])
 
     const marker = await Marker.create({ ...data })
@@ -59,7 +60,7 @@ class MarkerController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async show ({ params, request, response, view }) {
+  async show ({ params }) {
     const marker = await Marker.findOrFail(params.id)
 
     const treasures = await marker
