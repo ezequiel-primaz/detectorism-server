@@ -48,6 +48,36 @@ class TreasureController {
     return treasure
   }
 
+
+  /**
+   * @swagger
+   * /treasures/{id}:
+   *   get:
+   *     tags:
+   *       - Treasures
+   *     security:
+   *       - bearerAuth: []
+   *     summary: Get treasure details.
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         description: ID of the treasure.
+   *         required: true
+   *         type: integer
+   *     responses:
+   *       200:
+   *         description: Returns treasure details.
+   *         example:
+   *           id: 1,
+   *           user_id: 1
+   *           marker_id: 1
+   *           title: This is a wonderful object.
+   *           description: What nice coin.
+   *           created_at: 2021-04-27 20:48:08
+   *           updated_at: 2021-04-27 20:48:08
+   *           images: []
+   */
+
   /**
    * Display a single treasure.
    * GET treasures/:id
