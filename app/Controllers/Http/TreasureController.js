@@ -19,13 +19,51 @@ class TreasureController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index () {
+  async index() {
     const treasures = Treasure.query()
       .with('images')
       .fetch()
 
     return treasures
   }
+
+  /**
+   * @swagger
+   * /treasures:
+   *   post:
+   *     tags:
+   *       - Treasures
+   *     summary: Creates a new treasure.
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: body
+   *         name: user
+   *         description: The treasure to create.
+   *         schema:
+   *           type: object
+   *           required:
+   *             - title
+   *             - marker_id
+   *           properties:
+   *             title:
+   *               type: string
+   *             description:
+   *               type: string
+   *             marker_id:
+   *               type: uint
+   *     responses:
+   *       200:
+   *         description: Returns the created treasure
+   *         example:
+   *           description: What nice coin.
+   *           title: This is a wonderful object.
+   *           marker_id: 1
+   *           user_id: 1
+   *           created_at: 2021-04-27 20:48:08
+   *           updated_at: 2021-04-27 20:48:08
+   *           id: 1
+   */
 
   /**
    * Create/save a new treasure.
@@ -35,7 +73,7 @@ class TreasureController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store ({ auth, request }) {
+  async store({ auth, request }) {
     const { id } = auth.user
     const data = request.only([
       'title',
@@ -87,7 +125,7 @@ class TreasureController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async show ({ params }) {
+  async show({ params }) {
     const treasure = await Treasure.findOrFail(params.id)
 
     await treasure.load('images')
@@ -103,7 +141,7 @@ class TreasureController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async update ({ params, request, response }) {
+  async update({ params, request, response }) {
 
     const treasure = await Treasure.findOrFail(params.id)
     const data = request.only([
@@ -125,14 +163,14 @@ class TreasureController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy ({ params, auth, response }) {
+  async destroy({ params, auth, response }) {
 
     const treasure = await Treasure.findOrFail(params.id)
 
     if (treasure.user_id !== auth.user.id) {
       return response.status(401).send({ error: 'Not authorized' })
     }
-  
+
     await treasure.delete()
 
   }

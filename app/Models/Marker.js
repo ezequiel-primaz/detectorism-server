@@ -1,11 +1,34 @@
 'use strict'
 
-const { query } = require('@adonisjs/lucid/src/Lucid/Model')
-
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use('Model')
 const Database = use('Database')
 
+/** 
+*  @swagger
+*  definitions:
+*    Marker:
+*      type: object
+*      properties:
+*        id:
+*          type: uint
+*        title:
+*          type: string
+*        description:
+*          type: string
+*        latitude:
+*          type: number
+*        longitude:
+*          type: number
+*        isPrivate:
+*          type: boolean
+*        treasures:
+*          type: array
+*      required:
+*        - title
+*        - latitude
+*        - longitude
+*/
 class Marker extends Model {
 
     static scopeNearBy(query, latitude, longitude, distance) {

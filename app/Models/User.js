@@ -24,6 +24,8 @@ const Hash = use('Hash')
 *          type: string
 *        updated_at:
 *          type: string
+*        treasures:
+*          type: array
 *      required:
 *        - username
 *        - email
